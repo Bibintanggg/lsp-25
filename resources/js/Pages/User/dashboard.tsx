@@ -1,5 +1,9 @@
+import SidebarLayout from "../../layout";
+
 export default function Dashboard() {
     return (
-        <p>hello user</p>
+        <SidebarLayout>
+
+        </SidebarLayout>
     )
 }

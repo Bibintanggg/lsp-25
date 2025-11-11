@@ -10,6 +10,6 @@ class LandingController extends Controller
 {
     public function index()
     {
-        return Inertia::render('User/dashboard');
+        return Inertia::render('User/Dashboard');
     }
 }

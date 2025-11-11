@@ -25,15 +25,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $casts = [
-        'role' => UserRole::class
-    ];
-
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' => UserRole::class
         ];
     }
 }

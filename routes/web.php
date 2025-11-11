@@ -17,12 +17,14 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth', 'role:'. UserRole::ADMIN->value])->group(function() {
-    Route::get('admin/dashboard', [AdminLandingController::class, 'index'])->name('admin.dashboard');
-});
+Route::middleware(['auth', 'verified'])->group(function() {
+    Route::middleware(['role:'.UserRole::ADMIN->value])->group(function() {
+        Route::get('/admin/dashboard', [AdminLandingController::class, 'index'])->name('admin.dashboard');
+    });
 
-Route::middleware(['auth', 'role:'. UserRole::USER->value])->group(function() {
-    Route::get('user/dashboard', [UserLandingController::class, 'index'])->name('user.dashboard');
+    Route::middleware(['role:'.UserRole::USER->value])->group(function() {
+        Route::get('/user/dashboard', [UserLandingController::class, 'index'])->name('user.dashboard');
+    });
 });
 
 // Route::get('/dashboard', function () {
