@@ -5,9 +5,11 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
+      <main className=" w-full p-10">
         <SidebarTrigger />
+        <div className=" mx-auto">
         {children}
+        </div>
       </main>
     </SidebarProvider>
   )
