@@ -1,5 +1,11 @@
+import SidebarLayout from "../../layout";
+
 export default function Dashboard() {
     return (
-        <p>hello admin</p>
+        <SidebarLayout>
+            <div>
+
+            </div>
+        </SidebarLayout>
     )
 }

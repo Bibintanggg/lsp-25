@@ -14,17 +14,11 @@ import { ChevronUp, Home, User2 } from "lucide-react"
 import React from "react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
 import { usePage } from "@inertiajs/react"
+import { projects } from "@/data/sidebar-menu"
 
 export default function AppSidebar() {
   const {props} = usePage()
   // const user = props.auth.user.name
-
-  const projects = [
-    {id: 1, name: "Overview", url: "", icon: <Home/> },
-    {id: 2, name: "Overview", url: "", icon: <Home/> },
-    {id: 3, name: "Overview", url: "", icon: <Home/> },
-    {id: 4, name: "Overview", url: "", icon: <Home/> },
-  ]
   return (
     <Sidebar>
       <SidebarContent>
