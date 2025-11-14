@@ -13,7 +13,6 @@ import {
   SquareTerminal,
 } from "lucide-react"
 
-import { NavMain } from "@/Components/sidebar/nav-main"
 import { NavProjects } from "@/Components/sidebar/nav-projects"
 import { NavUser } from "@/Components/sidebar/nav-user"
 import { TeamSwitcher } from "@/Components/sidebar/team-switcher"
@@ -26,7 +25,6 @@ import {
 } from "@/Components/ui/sidebar"
 import { usePage } from "@inertiajs/react"
 
-// This is sample data.
 const data = {
   teams: [
     {
@@ -45,106 +43,24 @@ const data = {
       plan: "Free",
     },
   ],
-  navMain: [
-    {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
-  ],
   projects: [
     {
-      name: "Design Engineering",
-      url: "#",
+      name: "Dashboard",
+      url: "/admin/dashboard",
       icon: Frame,
     },
     {
-      name: "Sales & Marketing",
-      url: "#",
+      name: "Data Absensi",
+      url: "/admin/data-absensi",
       icon: PieChart,
     },
     {
-      name: "Travel",
+      name: "Data Siswa",
+      url: "#",
+      icon: Map,
+    },
+    {
+      name: "Pengguna",
       url: "#",
       icon: Map,
     },
@@ -161,7 +77,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
