@@ -7,9 +7,20 @@ import { Input } from "@/Components/ui/input"
 import { Button } from "@/Components/ui/button"
 import { Plus } from "lucide-react";
 import { useState } from "react";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/Components/ui/alert-dialog";
+import DataInput from "@/Components/InputData";
 
 export default function DataAbsensi() {
     const [input, setInput] = useState(false)
+    const [open, setOpen] = useState(false)
+
+    const handleConfirm = () => {
+        setOpen(false)
+
+        setTimeout(() => {
+            setInput(false)
+        }, 200);
+    }
 
     return (
         <SidebarLayout>
@@ -32,14 +43,31 @@ export default function DataAbsensi() {
                         Data Kehadiran Hari Ini
                     </h4>
 
-                    <Button variant="secondary" onClick={() => setInput(!input)}>
-                        <Plus />
-                        {input ? "Konfirmasi Kehadiran" : "Input Kehadiran"}
-                    </Button>
+
+                    {!input ? (
+                        <Button variant="secondary" onClick={() => setInput(true)}>
+                            <Plus />
+                            Input Kehadiran
+                        </Button>
+                    ) : (
+                        <Button variant="secondary" onClick={() => setOpen(true)}>
+                            <Plus />
+                            Konfirmasi Kehadiran
+                        </Button>
+                    )}
                 </div>
 
                 {input ? (
-                    <p>takde</p>          // ini halaman input nanti
+                    <>
+                        <div className="flex justify-between items-center gap-5 mt-5">
+                            <div className="flex gap-5">
+                                <SelectScrollable />
+                                <SelectScrollableKelas />
+                            </div>
+                        </div>
+                        <DataInput />
+
+                    </>
                 ) : (
                     <>
                         <div className="flex justify-between items-center gap-5 mt-5">
@@ -54,7 +82,24 @@ export default function DataAbsensi() {
                     </>
                 )}
 
+                <AlertDialog open={open} onOpenChange={setOpen}>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>Konfirmasi Kehadiran</AlertDialogTitle>
+                            <AlertDialogDescription>
+                                Apakah datanya sudah benar?
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction onClick={handleConfirm}>
+                                Continue
+                            </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
+
             </div>
-        </SidebarLayout>
+        </SidebarLayout >
     )
 }
